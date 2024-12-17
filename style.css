@@ -1,0 +1,235 @@
+/* Root Variables for Theme Colors */
+:root {
+    --bg-color: #0a192f; /* Background color */
+    --text-color: #8892b0; /* Default text color */
+    --highlight-color: #64ffda; /* Highlight/accent color */
+    --secondary-color: #112240; /* Secondary background color */
+}
+
+/* Universal Reset */
+* {
+    box-sizing: border-box; /* Ensures padding does not affect element size */
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Inter', sans-serif; /* Font family for body text */
+    background-color: var(--bg-color); /* Sets background color */
+    color: var(--text-color); /* Default text color */
+    line-height: 1.6; /* Space between lines */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Container for Consistent Padding */
+.container {
+    max-width: 1200px; /* Limits width for large screens */
+    margin: 0 auto; /* Center content horizontally */
+    padding: 0 2rem; /* Adds horizontal padding */
+}
+
+/* Header Styling */
+header {
+    position: fixed; /* Fixes header at the top */
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 1rem 0; /* Vertical padding */
+    background-color: rgba(10, 25, 47, 0.85); /* Transparent background */
+    backdrop-filter: blur(10px); /* Blur effect for transparency */
+    z-index: 1000; /* Ensures header appears above other elements */
+    transition: all 0.3s ease; /* Smooth transition effect */
+}
+
+/* Navigation Bar Styling */
+nav ul {
+    display: flex; /* Aligns items in a row */
+    justify-content: flex-end; /* Aligns items to the right */
+    list-style: none; /* Removes bullets */
+}
+
+nav ul li {
+    margin-left: 2rem; /* Spacing between navigation items */
+}
+
+nav ul li a {
+    color: var(--text-color); /* Link color */
+    text-decoration: none; /* Removes underline */
+    font-size: 0.9rem; /* Font size */
+    transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+nav ul li a:hover {
+    color: var(--highlight-color); /* Highlight color on hover */
+}
+
+/* Section Styling */
+section {
+    padding: 100px 0; /* Vertical padding */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Slide effect from bottom */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth appearance */
+}
+
+section.visible {
+    opacity: 1; /* Make visible */
+    transform: translateY(0); /* Reset slide effect */
+}
+
+/* Headings */
+h1, h2 {
+    color: #ccd6f6; /* Heading color */
+    margin-bottom: 1rem; /* Spacing below headings */
+}
+
+h1 {
+    font-size: 3rem; /* Large font size for main heading */
+    font-weight: 700; /* Bold */
+}
+
+h2 {
+    font-size: 2rem; /* Font size for section headings */
+    font-weight: 600;
+}
+
+/* Paragraph Styling */
+p {
+    margin-bottom: 1rem; /* Space below paragraphs */
+    font-size: 1rem; /* Default font size */
+}
+
+/* Hero Section Styling */
+.hero {
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Vertically center content */
+}
+
+.hero-content {
+    max-width: 600px; /* Limits content width */
+}
+
+.hero h1 span {
+    color: var(--highlight-color); /* Highlighted text */
+    display: block; /* Ensures span appears on new line */
+    font-size: 1.2rem; /* Smaller size for greeting */
+    margin-bottom: 1rem; /* Space below */
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block; /* Inline element with block behavior */
+    background-color: transparent;
+    color: var(--highlight-color); /* Text color */
+    border: 1px solid var(--highlight-color); /* Border styling */
+    padding: 0.75rem 1.5rem; /* Padding for button */
+    font-size: 0.9rem; /* Font size */
+    text-decoration: none; /* Removes underline */
+    transition: all 0.3s ease; /* Smooth effect */
+    margin-top: 1rem; /* Space above button */
+}
+
+.btn:hover {
+    background-color: rgba(100, 255, 218, 0.1); /* Highlight background on hover */
+}
+
+/* About, Skills, Projects, and Contact Sections */
+.about, .skills, .projects, .contact {
+    background-color: var(--secondary-color); /* Background color */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 2rem; /* Inner padding */
+    margin-bottom: 2rem; /* Space below sections */
+}
+
+/* Skills List Styling */
+.skills ul {
+    display: flex; /* Align items in a row */
+    flex-wrap: wrap; /* Wrap to next line if necessary */
+    list-style: none; /* Removes bullets */
+    margin-top: 1rem; /* Space above list */
+}
+
+.skills ul li {
+    margin-right: 1rem; /* Space between list items */
+    margin-bottom: 0.5rem; /* Space below items */
+    background-color: rgba(100, 255, 218, 0.1); /* Highlight background */
+    color: var(--highlight-color); /* Text color */
+    padding: 0.5rem 1rem; /* Padding for list items */
+    border-radius: 20px; /* Rounded edges */
+    font-size: 0.9rem; /* Font size */
+}
+
+/* Projects Grid Styling */
+.projects-grid {
+    display: grid; /* Grid layout for projects */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 1.5rem; /* Spacing between grid items */
+    margin-top: 2rem; /* Space above grid */
+}
+
+.project-card {
+    background-color: var(--bg-color); /* Card background */
+    border-radius: 4px; /* Rounded corners */
+    padding: 1.5rem; /* Inner padding */
+    transition: transform 0.3s ease; /* Hover effect */
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.project-card h3 {
+    color: #ccd6f6; /* Card heading color */
+    margin-bottom: 0.5rem; /* Space below heading */
+}
+
+/* Contact Section */
+.contact ul {
+    list-style: none; /* Removes bullets */
+}
+
+.contact ul li {
+    margin-bottom: 0.5rem; /* Space below list items */
+}
+
+.contact ul li a {
+    color: var(--text-color); /* Link color */
+    text-decoration: none; /* Removes underline */
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.contact ul li a:hover {
+    color: var(--highlight-color); /* Highlight on hover */
+}
+
+/* Footer Styling */
+footer {
+    text-align: center; /* Center text */
+    padding: 2rem 0; /* Vertical padding */
+    font-size: 0.9rem; /* Small font size */
+}
+
+/* Responsive Styling for Smaller Screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem; /* Adjust heading size */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* Adjust subheading size */
+    }
+
+    .hero {
+        height: auto; /* Adjust hero height */
+        padding-top: 150px; /* Add padding */
+    }
+
+    nav ul {
+        justify-content: center; /* Center navigation links */
+    }
+
+    nav ul li {
+        margin: 0 1rem; /* Adjust spacing between items */
+    }
+}
