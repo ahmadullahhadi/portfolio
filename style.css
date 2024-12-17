@@ -189,7 +189,7 @@ p {
     list-style: none; /* Removes bullets */
     display: flex; /* Align items horizontally */
     justify-content: center; /* Center icons */
-    gap: 23px; /* Space between icons */
+    gap: 20px; /* Space between icons */
     padding: 0;
 }
 
