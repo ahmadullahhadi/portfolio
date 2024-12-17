@@ -1,37 +1,35 @@
 // Wait for the DOM content to fully load
 document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling functionality for navigation links
-    const links = document.querySelectorAll('nav ul li a'); // Select all navigation links
-    
+    const links = document.querySelectorAll('nav ul li a, .btn'); // Update this to include the correct button class
     links.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default anchor link behavior
-            
-            const targetId = link.getAttribute('href').substring(1); // Get the ID of the target section (removing the #)
-            const targetSection = document.getElementById(targetId); // Find the section by ID
-            
+            e.preventDefault(); // Prevent default link behavior
+            const targetId = link.getAttribute('href').substring(1); // Get the target ID from the href
+            const targetSection = document.getElementById(targetId); // Find the target section by ID
             if (targetSection) {
                 targetSection.scrollIntoView({
-                    behavior: 'smooth' // Smoothly scroll to the target section
+                    behavior: 'smooth', // Smooth scroll to the section
+                    block: 'start' // Scroll to the start of the section
                 });
             }
         });
     });
+});
 
-    // Section visibility animation based on scroll position
-    const sections = document.querySelectorAll('section'); // Select all sections on the page
-    
-    // Create an Intersection Observer to detect when sections are in the viewport
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) { // Check if the section is visible in the viewport
-                entry.target.classList.add('visible'); // Add the 'visible' class to trigger the animation
-            }
-        });
-    }, { threshold: 0.1 }); // Trigger when 10% of the section is visible
-
-    // Observe each section for visibility changes
-    sections.forEach(section => {
-        observer.observe(section);
+// Intersection Observer for animating sections when they come into view
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); // Add the 'visible' class when the section comes into view
+            observer.unobserve(entry.target); // Stop observing once the section is visible
+        }
     });
+}, {
+    threshold: 0.5 // Trigger when 50% of the section is in view
+});
+
+// Observe all sections for visibility
+document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
 });
