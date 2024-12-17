@@ -185,22 +185,26 @@ p {
 }
 
 /* Contact Section */
-.contact ul {
+.contact .contact-icons {
     list-style: none; /* Removes bullets */
+    display: flex; /* Align items horizontally */
+    justify-content: center; /* Center icons */
+    gap: 30px; /* Space between icons */
+    padding: 0;
 }
 
-.contact ul li {
-    margin-bottom: 0.5rem; /* Space below list items */
+.contact .contact-icons li {
+    font-size: 2rem; /* Adjust size of icons */
 }
 
-.contact ul li a {
-    color: var(--text-color); /* Link color */
+.contact .contact-icons a {
+    color: var(--text-color); /* Icon color */
     text-decoration: none; /* Removes underline */
     transition: color 0.3s ease; /* Smooth hover effect */
 }
 
-.contact ul li a:hover {
-    color: var(--highlight-color); /* Highlight on hover */
+.contact .contact-icons a:hover {
+    color: var(--highlight-color); /* Highlight color on hover */
 }
 
 /* Footer Styling */
