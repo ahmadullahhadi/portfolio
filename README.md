@@ -8,7 +8,7 @@ This website is a showcase of my personal work, projects, and interests. It's de
 
 ## Features ⚙️
 
-- **Logo**: My initials 'AH' with a clean design. 🔤
+- **Logo**: Yet to be implemented. 🔤
 - **Contact Section**: Hover to reveal my contact details (email/WhatsApp). 📧📱
 - **Responsive**: Optimized for both desktop and mobile viewing. 📱💻
 
