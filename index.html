@@ -19,8 +19,44 @@
     <!-- Font Awesome CDN (for icons) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
+    <!-- Anime.js for Loading Screen -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+    <!-- Loading Screen Styles -->
+    <style>
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-color: #0a192f;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+      }
+      .loading-container svg {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
   </head>
   <body>
+    <!-- Loading Screen -->
+    <div class="loading-container" id="loading-screen">
+      <svg id="hexagon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <g id="H" transform="translate(3, 33)" fill="#64FFDA" style="opacity: 0" font-family="system-ui, Calibre-Medium, Calibre, sans-serif" font-size="50" font-weight="400" letter-spacing="4.16666603">
+            <text>
+              <tspan x="50" y="33" text-anchor="middle">H</tspan>
+            </text>
+          </g>
+          <path stroke="#64FFDA" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M 50, 5 L 11, 27 L 11, 72 L 50, 95 L 89, 73 L 89, 28 z" />
+        </g>
+      </svg>
+    </div>
+
     <!-- Header Section -->
     <header>
       <!-- Navigation Bar -->
@@ -36,7 +72,7 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main style="opacity: 0; transition: opacity 1s;" id="main-content">
       <!-- Hero Section -->
       <section id="home" class="hero">
         <div class="container hero-content">
@@ -125,5 +161,36 @@
     <!-- External JavaScript -->
     <script src="https://ahmadullahhadi.github.io/A_Hadi/script.js"></script>
 
+    <!-- Loading Screen Script -->
+    <script>
+      // Anime.js animation
+      const anim = anime.timeline({
+        loop: true,
+        direction: 'alternate',
+      });
+
+      anim
+        .add({
+          targets: '#hexagon path',
+          strokeDashoffset: [anime.setDashoffset, 0],
+          easing: 'easeInOutQuart',
+          duration: 2000,
+          delay: function(el, i) { return i * 250 },
+        })
+        .add({
+          targets: '#hexagon #H',
+          duration: 1000,
+          opacity: 1,
+          easing: 'easeInOutQuart'
+        });
+
+      // Hide loading screen and show main content after a delay
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.getElementById('loading-screen').style.display = 'none';
+          document.getElementById('main-content').style.opacity = '1';
+        }, 3000); // Adjust the delay as needed
+      });
+    </script>
   </body>
 </html>
