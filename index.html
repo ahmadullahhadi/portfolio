@@ -1,239 +1,197 @@
-/* Root Variables for Theme Colors */
-:root {
-    --bg-color: #0a192f; /* Background color */
-    --text-color: #8892b0; /* Default text color */
-    --highlight-color: #64ffda; /* Highlight/accent color */
-    --secondary-color: #112240; /* Secondary background color */
-}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ahmadullah Hadi - Student and Aspiring Technologist. Explore my journey, skills, and projects in technology and business.">
 
-/* Universal Reset */
-* {
-    box-sizing: border-box; /* Ensures padding does not affect element size */
-    margin: 0;
-    padding: 0;
-}
+    <!-- Title and Favicon -->
+    <title>A. Hadi - Portfolio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
 
-/* Body Styling */
-body {
-    font-family: 'Inter', sans-serif; /* Font family for body text */
-    background-color: var(--bg-color); /* Sets background color */
-    color: var(--text-color); /* Default text color */
-    line-height: 1.6; /* Space between lines */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
 
-/* Container for Consistent Padding */
-.container {
-    max-width: 1200px; /* Limits width for large screens */
-    margin: 0 auto; /* Center content horizontally */
-    padding: 0 2rem; /* Adds horizontal padding */
-}
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
 
-/* Header Styling */
-header {
-    position: fixed; /* Fixes header at the top */
-    width: 100%;
-    top: 0;
-    left: 0;
-    padding: 1rem 0; /* Vertical padding */
-    background-color: rgba(10, 25, 47, 0.85); /* Transparent background */
-    backdrop-filter: blur(10px); /* Blur effect for transparency */
-    z-index: 1000; /* Ensures header appears above other elements */
-    transition: all 0.3s ease; /* Smooth transition effect */
-}
+    <!-- Font Awesome CDN (for icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
-/* Navigation Bar Styling */
-nav ul {
-    display: flex; /* Aligns items in a row */
-    justify-content: flex-end; /* Aligns items to the right */
-    list-style: none; /* Removes bullets */
-}
+    <!-- Anime.js for Loading Screen -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
 
-nav ul li {
-    margin-left: 2rem; /* Spacing between navigation items */
-}
+    <!-- Loading Screen Styles -->
+    <style>
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-color: #0a192f;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+      }
+      .loading-container svg {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading-container" id="loading-screen">
+      <svg id="hexagon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <g id="H" transform="translate(2, 33)" fill="#64FFDA" style="opacity: 0" font-family="system-ui, Calibre-Medium, Calibre, sans-serif" font-size="50" font-weight="400" letter-spacing="4.16666603">
+            <text>
+              <tspan x="50" y="33" text-anchor="middle">H</tspan>
+            </text>
+          </g>
+          <path stroke="#64FFDA" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M 50, 5 L 11, 27 L 11, 72 L 50, 95 L 89, 73 L 89, 28 z" />
+        </g>
+      </svg>
+    </div>
 
-nav ul li a {
-    color: var(--text-color); /* Link color */
-    text-decoration: none; /* Removes underline */
-    font-size: 0.9rem; /* Font size */
-    transition: color 0.3s ease; /* Smooth color change on hover */
-}
+    <!-- Header Section -->
+    <header>
+      <!-- Navigation Bar -->
+      <nav class="container">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-nav ul li a:hover {
-    color: var(--highlight-color); /* Highlight color on hover */
-}
+    <!-- Main Content -->
+    <main style="opacity: 0; transition: opacity 1s;" id="main-content">
+      <!-- Hero Section -->
+      <section id="home" class="hero">
+        <div class="container hero-content">
+          <h1>
+            <span>Hello, I'm</span>A. Hadi
+          </h1>
+          <p>
+            Exploring tech, coding, and business to build creative solutions for the future.
+          </p>
+          <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+      </section>
 
-/* Section Styling */
-section {
-    padding: 100px 0; /* Vertical padding */
-    opacity: 0; /* Initially hidden */
-    transform: translateY(20px); /* Slide effect from bottom */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth appearance */
-}
+      <!-- About Me Section -->
+      <div class="container">
+        <section id="about" class="about">
+          <h2>About Me</h2>
+          <p>
+            I'm Ahmadullah Hadi, a student motivated by my love for technology, programming, and business, committed to pursuing a career that integrates these passions for a better tomorrow.
+          </p>
+          <p>
+            When I’m not busy, I find joy in music, anime/manga, caring for animals (especially cats), and reading books. These activities keep me curious and motivated to learn more.
+          </p>
+        </section>
 
-section.visible {
-    opacity: 1; /* Make visible */
-    transform: translateY(0); /* Reset slide effect */
-}
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+          <h2>Skills (in Progress)</h2>
+          <p>My skills are a mix of various fields, non of them are perfect.</p>
+          <ul>
+            <li>Python Programming (Basics)</li>
+            <li>HTML & CSS (Beginner)</li>
+            <li>Video Editing (Basic)</li>
+            <li>Graphic Design (Basic)</li>
+            <li>C Programming (Beginner)</li>
+            <li>ML/AI (Exploring)</li>
+            <li>Cybersecurity (Exploring)</li>
+            <li>Digital Marketing</li>
+            <li>Finance Principles</li>
+          </ul>
+        </section>
 
-/* Headings */
-h1, h2 {
-    color: #ccd6f6; /* Heading color */
-    margin-bottom: 1rem; /* Spacing below headings */
-}
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+          <h2>Projects</h2>
+          <p>
+            I'm currently working on building my project portfolio. Check back soon to see my latest work!
+          </p>
+          <div class="projects-grid">
+            <div class="project-card">
+              <h3>Project 1</h3>
+              <p>Under Construction</p>
+            </div>
+            <div class="project-card">
+              <h3>Project 2</h3>
+              <p>Planning...</p>
+            </div>
+            <div class="project-card">
+              <h3>Project 3</h3>
+              <p>Whenever it feels like it, I suppose.</p>
+            </div>
+          </div>
+        </section>
 
-h1 {
-    font-size: 3rem; /* Large font size for main heading */
-    font-weight: 700; /* Bold */
-}
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+          <h2>Get In Touch</h2>
+          <p>
+            I'm always open to new opportunities and connections. Feel free to reach out!
+          </p>
+          <ul class="contact-icons">
+            <li><a href="https://web.facebook.com/ahmadullahhadi" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/ahmadullahhadi" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/ahmadullahhadi" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a href="mailto:ahmadullahhadi85@gmail.com"><i class="fas fa-envelope"></i></a></li>
+            <li><a href="https://wa.me/+8801611469710" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+          </ul>
+        </section>
+      </div>
+    </main>
 
-h2 {
-    font-size: 2rem; /* Font size for section headings */
-    font-weight: 600;
-}
+    <!-- Footer Section -->
+    <footer>
+      <p>© 2024 Ahmadullah Hadi | All rights reserved.</p>
+    </footer>
 
-/* Paragraph Styling */
-p {
-    margin-bottom: 1rem; /* Space below paragraphs */
-    font-size: 1rem; /* Default font size */
-}
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
 
-/* Hero Section Styling */
-.hero {
-    height: 100vh; /* Full viewport height */
-    display: flex; /* Flexbox for alignment */
-    align-items: center; /* Vertically center content */
-}
+    <!-- Loading Screen Script -->
+    <script>
+      // Anime.js animation
+      const anim = anime.timeline({
+        loop: true,
+        direction: 'alternate',
+      });
 
-.hero-content {
-    max-width: 600px; /* Limits content width */
-}
+      anim
+        .add({
+          targets: '#hexagon path',
+          strokeDashoffset: [anime.setDashoffset, 0],
+          easing: 'easeInOutQuart',
+          duration: 2000,
+          delay: function(el, i) { return i * 250 },
+        })
+        .add({
+          targets: '#hexagon #H',
+          duration: 1000,
+          opacity: 1,
+          easing: 'easeInOutQuart'
+        });
 
-.hero h1 span {
-    color: var(--highlight-color); /* Highlighted text */
-    display: block; /* Ensures span appears on new line */
-    font-size: 1.2rem; /* Smaller size for greeting */
-    margin-bottom: 1rem; /* Space below */
-}
-
-/* Button Styling */
-.btn {
-    display: inline-block; /* Inline element with block behavior */
-    background-color: transparent;
-    color: var(--highlight-color); /* Text color */
-    border: 1px solid var(--highlight-color); /* Border styling */
-    padding: 0.75rem 1.5rem; /* Padding for button */
-    font-size: 0.9rem; /* Font size */
-    text-decoration: none; /* Removes underline */
-    transition: all 0.3s ease; /* Smooth effect */
-    margin-top: 1rem; /* Space above button */
-}
-
-.btn:hover {
-    background-color: rgba(100, 255, 218, 0.1); /* Highlight background on hover */
-}
-
-/* About, Skills, Projects, and Contact Sections */
-.about, .skills, .projects, .contact {
-    background-color: var(--secondary-color); /* Background color */
-    border-radius: 4px; /* Slightly rounded corners */
-    padding: 2rem; /* Inner padding */
-    margin-bottom: 2rem; /* Space below sections */
-}
-
-/* Skills List Styling */
-.skills ul {
-    display: flex; /* Align items in a row */
-    flex-wrap: wrap; /* Wrap to next line if necessary */
-    list-style: none; /* Removes bullets */
-    margin-top: 1rem; /* Space above list */
-}
-
-.skills ul li {
-    margin-right: 1rem; /* Space between list items */
-    margin-bottom: 0.5rem; /* Space below items */
-    background-color: rgba(100, 255, 218, 0.1); /* Highlight background */
-    color: var(--highlight-color); /* Text color */
-    padding: 0.5rem 1rem; /* Padding for list items */
-    border-radius: 20px; /* Rounded edges */
-    font-size: 0.9rem; /* Font size */
-}
-
-/* Projects Grid Styling */
-.projects-grid {
-    display: grid; /* Grid layout for projects */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
-    gap: 1.5rem; /* Spacing between grid items */
-    margin-top: 2rem; /* Space above grid */
-}
-
-.project-card {
-    background-color: var(--bg-color); /* Card background */
-    border-radius: 4px; /* Rounded corners */
-    padding: 1.5rem; /* Inner padding */
-    transition: transform 0.3s ease; /* Hover effect */
-}
-
-.project-card:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-}
-
-.project-card h3 {
-    color: #ccd6f6; /* Card heading color */
-    margin-bottom: 0.5rem; /* Space below heading */
-}
-
-/* Contact Section */
-.contact .contact-icons {
-    list-style: none; /* Removes bullets */
-    display: flex; /* Align items horizontally */
-    justify-content: center; /* Center icons */
-    gap: 20px; /* Space between icons */
-    padding: 0;
-}
-
-.contact .contact-icons li {
-    font-size: 2rem; /* Adjust size of icons */
-}
-
-.contact .contact-icons a {
-    color: var(--text-color); /* Icon color */
-    text-decoration: none; /* Removes underline */
-    transition: color 0.3s ease; /* Smooth hover effect */
-}
-
-.contact .contact-icons a:hover {
-    color: var(--highlight-color); /* Highlight color on hover */
-}
-
-/* Footer Styling */
-footer {
-    text-align: center; /* Center text */
-    padding: 2rem 0; /* Vertical padding */
-    font-size: 0.9rem; /* Small font size */
-}
-
-/* Responsive Styling for Smaller Screens */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem; /* Adjust heading size */
-    }
-
-    h2 {
-        font-size: 1.8rem; /* Adjust subheading size */
-    }
-
-    .hero {
-        height: auto; /* Adjust hero height */
-        padding-top: 150px; /* Add padding */
-    }
-
-    nav ul {
-        justify-content: center; /* Center navigation links */
-    }
-
-    nav ul li {
-        margin: 0 1rem; /* Adjust spacing between items */
-    }
-}
+      // Hide loading screen and show main content after a delay
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.getElementById('loading-screen').style.display = 'none';
+          document.getElementById('main-content').style.opacity = '1';
+        }, 2600); // Adjust the delay as needed
+      });
+    </script>
+  </body>
+</html>
