@@ -1,213 +1,218 @@
-/* Root Variables for Theme Colors */
+/* Root Variables for Theme Colors - Defines global color scheme */
 :root {
-    --bg-color: #0a192f; /* Background color */
-    --text-color: #8892b0; /* Default text color */
-    --highlight-color: #64ffda; /* Highlight/accent color */
-    --secondary-color: #112240; /* Secondary background color */
+    --bg-color: #0a192f;      /* Dark blue background color */
+    --text-color: #8892b0;    /* Muted blue-gray text color */
+    --highlight-color: #64ffda; /* Bright cyan for highlights and accents */
+    --secondary-color: #112240; /* Slightly lighter blue for secondary elements */
 }
 
-/* Universal Reset */
+/* Universal Reset - Applied to all elements */
 * {
-    box-sizing: border-box; /* Ensures padding does not affect element size */
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box;    /* Include padding in element width calculations */
+    margin: 0;                 /* Remove default margins */
+    padding: 0;                /* Remove default padding */
 }
 
+/* Custom Cursor Follower - Creates an animated floating cursor effect */
 .cursor-follower {
-    width: 50px;
-    height: 50px;
-    background: var(--highlight-color);
-    border-radius: 45%;
-    box-shadow: 0 0 15px var(--highlight-color), 0 0 30px rgba(255, 255, 255, 0.2);
-    opacity: 0.8;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
+    width: 30px;              /* Size of the cursor */
+    height: 30px;             /* Size of the cursor */
+    background: var(--highlight-color); /* Uses theme highlight color */
+    border-radius: 45%;       /* Creates rounded shape */
+    box-shadow: 0 0 15px var(--highlight-color), 0 0 30px rgba(255, 255, 255, 0.2); /* Glowing effect */
+    opacity: 0.8;             /* Slight transparency */
+    position: fixed;          /* Follows viewport */
+    pointer-events: none;     /* Prevents interference with clicking */
+    z-index: 10000;          /* Always on top */
+    transition: transform 0.0s ease, box-shadow 0.0s ease, opacity 0.0s ease; /* Instant transitions */
+    transform: translate(-50%, -50%); /* Centers the cursor */
+    mix-blend-mode: difference; /* Creates contrast with background */
+    animation: sprinkle 5s infinite; /* Continuous shape-shifting animation */
 }
 
+/* Cursor Hover Effect - Enlarges cursor on hover */
 .cursor-follower:hover {
-    transform: translate(-50%, -50%) scale(1.5);
-    opacity: 1;
-    box-shadow: 0 0 20px var(--highlight-color), 0 0 40px rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%) scale(1.5); /* Increases size by 50% */
+    opacity: 1;               /* Full opacity */
+    box-shadow: 0 0 20px var(--highlight-color), 0 0 40px rgba(255, 255, 255, 0.4); /* Enhanced glow */
 }
 
-/* Body Styling */
+/* Cursor Animation - Defines shape-shifting behavior */
+@keyframes sprinkle {
+    0%, 100% { border-radius: 45%; }                 /* Start and end shape */
+    25% { border-radius: 50% 45% 50% 45%; }         /* First morph */
+    50% { border-radius: 45% 50% 45% 50%; }         /* Second morph */
+    75% { border-radius: 50% 45% 50% 45%; }         /* Third morph */
+}
+
+/* Main Body Styling - Sets overall page appearance */
 body {
-    font-family: 'Inter', sans-serif; /* Font family for body text */
-    background-color: var(--bg-color); /* Sets background color */
-    color: var(--text-color); /* Default text color */
-    line-height: 1.6; /* Space between lines */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-family: 'Inter', sans-serif; /* Modern, clean font */
+    background-color: var(--bg-color); /* Theme background */
+    color: var(--text-color);          /* Theme text color */
+    line-height: 1.6;                  /* Comfortable reading spacing */
+    overflow-x: hidden;                /* Prevents horizontal scrollbars */
 }
 
-/* Container for Consistent Padding */
+/* Content Container - Centers and constrains page content */
 .container {
-    max-width: 1200px; /* Limits width for large screens */
-    margin: 0 auto; /* Center content horizontally */
-    padding: 0 2rem; /* Adds horizontal padding */
+    max-width: 1200px;        /* Maximum content width */
+    margin: 0 auto;           /* Centers horizontally */
+    padding: 0 2rem;          /* Spacing from screen edges */
 }
 
-/* Header Styling */
+/* Header Styling - Makes header stick to top of page with blur effect */
 header {
-    position: fixed; /* Fixes header at the top */
-    width: 100%;
-    top: 0;
-    left: 0;
-    padding: 1rem 0; /* Vertical padding */
-    background-color: rgba(10, 25, 47, 0.85); /* Transparent background */
-    backdrop-filter: blur(10px); /* Blur effect for transparency */
-    z-index: 1000; /* Ensures header appears above other elements */
-    transition: all 0.3s ease; /* Smooth transition effect */
+    position: fixed;          /* Keeps header at top of viewport */
+    width: 100%;             /* Full width of viewport */
+    top: 0;                  /* Aligns to top */
+    left: 0;                 /* Aligns to left */
+    padding: 1rem 0;         /* Adds vertical spacing */
+    background-color: rgba(10, 25, 47, 0.85); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Creates frosted glass effect */
+    z-index: 1000;          /* Keeps header above other elements */
+    transition: all 0.3s ease; /* Smooth transitions for all changes */
 }
 
-/* Navigation Bar Styling */
+/* Navigation Bar Layout - Centers navigation items */
 nav {
-    display: flex; /* Flexbox for alignment */
-    justify-content: flex-end; /* Space between items */
-    align-items: center; /* Vertically center items */
+    display: flex;           /* Uses flexbox layout */
+    justify-content: center; /* Centers items horizontally */
+    align-items: center;     /* Centers items vertically */
+    padding: 0 1rem;        /* Adds horizontal padding */
 }
 
+/* Navigation List - Horizontal list of navigation items */
 nav ul {
-    display: flex; /* Flexbox for alignment */
-    list-style: none; /* Removes bullets */
+    display: flex;          /* Creates horizontal layout */
+    list-style: none;       /* Removes bullet points */
+    justify-content: center; /* Centers navigation items */
+    flex-wrap: wrap;        /* Allows items to wrap on small screens */
+    padding: 0;             /* Removes default padding */
+    margin: 0;              /* Removes default margin */
 }
 
+/* Navigation List Items - Spacing between nav items */
 nav ul li {
-    margin-left: 2rem; /* Space between navigation items */
+    margin: 0 1rem;         /* Adds horizontal spacing between items */
 }
 
+/* Navigation Links - Styling for nav links */
 nav ul li a {
-    color: var(--text-color); /* Text color */
-    text-decoration: none; /* Removes underline */
-    transition: color 0.3s ease; /* Smooth hover effect */
+    color: var(--text-color); /* Uses theme text color */
+    text-decoration: none;    /* Removes underline */
+    font-size: 1rem;         /* Sets font size */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Navigation Hover Effect - Visual feedback on hover */
+nav ul li a:hover {
+    color: var(--highlight-color); /* Changes color on hover */
+    background-color: rgba(10, 25, 47, 0.85); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect on hover */
+}
+
+/* Mobile Navigation - Adjustments for small screens */
+@media (max-width: 600px) {
     nav {
-    display: flex; /* Flexbox for alignment */
-    justify-content: flex-end; /* Space between items */
-    align-items: center; /* Vertically center items */
+        justify-content: center; /* Centers nav on mobile */
+    }
+
+    nav ul li {
+        margin: 0.5rem;      /* Reduces spacing on mobile */
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;   /* Smaller font on mobile */
+    }
 }
 
-nav ul {
-    display: flex; /* Flexbox for alignment */
-    list-style: none; /* Removes bullets */
-}
-
-nav ul li {
-    margin-left: 2rem; /* Space between navigation items */
-}
-
-nav ul li a {
-    color: var(--text-color); /* Text color */
-    text-decoration: none; /* Removes underline */
-    transition: color 0.3s ease; /* Smooth hover effect */
-    font-size: 0.9rem; /* Font size */
-}
-
-nav ul li a:hover {
-    color: var(--highlight-color); /* Highlight color on hover */
-    background-color: rgba(10, 25, 47, 0.85); /* Transparent background */
-    backdrop-filter: blur(10px); /* Blur effect for transparency */
-}
-
-/* Section Styling */
+/* Section Animation - Fade-in and slide-up effect */
 section {
-    padding: 100px 0; /* Vertical padding */
-    opacity: 0; /* Initially hidden */
-    transform: translateY(20px); /* Slide effect from bottom */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth appearance */
+    padding: 100px 0;        /* Vertical padding for sections */
+    opacity: 0;              /* Initially invisible */
+    transform: translateY(20px); /* Starting position below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth animations */
 }
 
+/* Section Visibility - Shows section when 'visible' class is added */
 section.visible {
-    opacity: 1; /* Make visible */
-    transform: translateY(0); /* Reset slide effect */
+    opacity: 1;              /* Makes section visible */
+    transform: translateY(0); /* Moves section to final position */
 }
 
-}
-
-nav ul li a:hover {
-    color: var(--highlight-color); /* Highlight color on hover */
-    background-color: rgba(10, 25, 47, 0.85); /* Transparent background */
-    backdrop-filter: blur(10px); /* Blur effect for transparency */
-}
-
-/* Section Styling */
-section {
-    padding: 100px 0; /* Vertical padding */
-    opacity: 0; /* Initially hidden */
-    transform: translateY(20px); /* Slide effect from bottom */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth appearance */
-}
-
+/* Section Visibility State - Controls the visibility of sections when scrolled into view */
 section.visible {
-    opacity: 1; /* Make visible */
-    transform: translateY(0); /* Reset slide effect */
+    opacity: 1;              /* Makes section fully visible when .visible class is added */
+    transform: translateY(0); /* Returns section to original position, removing slide-up effect */
 }
 
-/* Headings */
+/* Typography Hierarchy - Defines the visual hierarchy through headings */
 h1, h2 {
-    color: #ccd6f6; /* Heading color */
-    margin-bottom: 1rem; /* Spacing below headings */
+    color: #ccd6f6;         /* Light blue-gray color for better contrast against dark background */
+    margin-bottom: 1rem;    /* Provides spacing between heading and following content */
 }
 
 h1 {
-    font-size: 3rem; /* Large font size for main heading */
-    font-weight: 700; /* Bold */
+    font-size: 3rem;        /* Large size for main headings, typically used in hero section */
+    font-weight: 700;       /* Extra bold weight for emphasis */
 }
 
 h2 {
-    font-size: 2rem; /* Font size for section headings */
-    font-weight: 600;
+    font-size: 2rem;        /* Medium size for section headings */
+    font-weight: 600;       /* Semi-bold weight for hierarchy */
 }
 
-/* Paragraph Styling */
+/* Base Text Styling - Sets default paragraph properties */
 p {
-    margin-bottom: 1rem; /* Space below paragraphs */
-    font-size: 1rem; /* Default font size */
+    margin-bottom: 1rem;    /* Consistent spacing between paragraphs */
+    font-size: 1rem;        /* Standard readable font size */
 }
 
-/* Hero Section Styling */
+/* Hero Section Layout - Main landing section styling */
 .hero {
-    height: 100vh; /* Full viewport height */
-    display: flex; /* Flexbox for alignment */
-    align-items: center; /* Vertically center content */
+    height: 100vh;          /* Takes up full viewport height */
+    display: flex;          /* Uses flexbox for centering */
+    align-items: center;    /* Vertically centers content */
 }
 
+/* Hero Content Container - Constrains and positions hero text */
 .hero-content {
-    max-width: 600px; /* Limits content width */
+    max-width: 600px;       /* Limits width for better readability */
 }
 
+/* Hero Introduction Text - Styles the greeting text */
 .hero h1 span {
-    color: var(--highlight-color); /* Highlighted text */
-    display: block; /* Ensures span appears on new line */
-    font-size: 1.2rem; /* Smaller size for greeting */
-    margin-bottom: 1rem; /* Space below */
+    color: var(--highlight-color); /* Uses theme accent color */
+    display: block;         /* Places greeting on separate line */
+    font-size: 1.2rem;     /* Smaller size than main heading */
+    margin-bottom: 1rem;    /* Spacing before main heading */
 }
 
-/* Button Styling */
+/* Call-to-Action Button - Styles interactive buttons */
 .btn {
-    display: inline-block; /* Inline element with block behavior */
+    display: inline-block;  /* Allows block properties while staying inline */
     background-color: transparent;
-    color: var(--highlight-color); /* Text color */
-    border: 1px solid var(--highlight-color); /* Border styling */
-    padding: 0.75rem 1.5rem; /* Padding for button */
-    font-size: 0.9rem; /* Font size */
-    text-decoration: none; /* Removes underline */
-    transition: all 0.3s ease; /* Smooth effect */
-    margin-top: 1rem; /* Space above button */
+    color: var(--highlight-color); /* Uses theme accent color */
+    border: 1px solid var(--highlight-color); /* Outlined button style */
+    padding: 0.75rem 1.5rem; /* Comfortable clickable area */
+    font-size: 0.9rem;      /* Slightly smaller than body text */
+    text-decoration: none;   /* Removes default link underline */
+    transition: all 0.3s ease; /* Smooth hover animation */
+    margin-top: 1rem;       /* Space from above elements */
 }
 
+/* Button Hover State - Interactive feedback */
 .btn:hover {
-    background-color: rgba(100, 255, 218, 0.1); /* Highlight background on hover */
+    background-color: rgba(100, 255, 218, 0.1); /* Subtle highlight effect */
 }
 
-/* About, Skills, Projects, and Contact Sections */
+/* Content Section Styling - Common styles for main content sections */
 .about, .skills, .projects, .contact {
-    background-color: var(--secondary-color); /* Background color */
-    border-radius: 4px; /* Slightly rounded corners */
-    padding: 2rem; /* Inner padding */
-    margin-bottom: 2rem; /* Space below sections */
+    background-color: var(--secondary-color); /* Slightly lighter background */
+    border-radius: 4px;     /* Soft corners */
+    padding: 2rem;          /* Internal spacing */
+    margin-bottom: 2rem;    /* Spacing between sections */
 }
 
 /* Skills List Styling */
@@ -284,24 +289,121 @@ footer {
 
 /* Responsive Styling for Smaller Screens */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem; /* Adjust heading size */
+    .hero-content {
+        max-width: 100%; /* Full width for smaller screens */
     }
 
-    h2 {
-        font-size: 1.8rem; /* Adjust subheading size */
+    .hero h1 {
+        font-size: 2.5rem; /* Adjust font size */
     }
 
-    .hero {
-        height: auto; /* Adjust hero height */
-        padding-top: 150px; /* Add padding */
+    .hero h1 span {
+        font-size: 1rem; /* Adjust font size */
     }
 
-    nav ul {
-        justify-content: center; /* Center navigation links */
+    .btn {
+        font-size: 0.8rem; /* Adjust font size */
     }
 
+    .about, .skills, .projects, .contact {
+        padding: 1.5rem; /* Reduce padding */
+    }
+
+    .skills ul li {
+        font-size: 0.8rem; /* Adjust font size */
+    }
+
+    .projects-grid {
+        gap: 1rem; /* Reduce gap */
+    }
+
+    .project-card {
+        padding: 1rem; /* Reduce padding */
+    }
+
+    .project-card h3 {
+        font-size: 1.2rem; /* Adjust font size */
+    }
+
+    .contact .contact-icons {
+        padding: 1rem 0; /* Reduce padding */
+    }
+
+    .contact .contact-icons li {
+        font-size: 1.5rem; /* Adjust icon size */
+    }
+
+    footer {
+        font-size: 0.8rem; /* Adjust font size */
+    }
+}
+
+/* Responsive Styling for Tablets */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1rem; /* Reduce horizontal padding */
+    }
+}
+
+/* Responsive Styling for Mobile Devices */
+
+@media (max-width: 768px) {
+    .hero-content {
+        max-width: 100%; /* Full width for smaller screens */
+    }
+
+    .hero h1 {
+        font-size: 2.5rem; /* Adjust font size */
+    }
+
+    .hero h1 span {
+        font-size: 1rem; /* Adjust font size */
+    }
+
+    .btn {
+        font-size: 0.8rem; /* Adjust font size */
+    }
+
+    .about, .skills, .projects, .contact {
+        padding: 1.5rem; /* Reduce padding */
+    }
+
+    .skills ul li {
+        font-size: 0.8rem; /* Adjust font size */
+    }
+
+    .projects-grid {
+        gap: 1rem; /* Reduce gap */
+    }
+
+    .project-card {
+        padding: 1rem; /* Reduce padding */
+    }
+
+    .project-card h3 {
+        font-size: 1.2rem; /* Adjust font size */
+    }
+
+    .contact .contact-icons {
+        padding: 1rem 0; /* Reduce padding */
+    }
+
+    .contact .contact-icons li {
+        font-size: 1.5rem; /* Adjust icon size */
+    }
+
+    footer {
+        font-size: 0.8rem; /* Adjust font size */
+    }
+}
+
+/* Responsive Styling for Smartphones */
+@media (max-width: 600px) {
     nav ul li {
-        margin: 0 1rem; /* Adjust spacing between items */
+        margin: 0.5rem; /* Reduce margin for better spacing on small screens */
+    }
+
+    nav ul li a {
+        font-size: 0.9rem; /* Slightly smaller font size */
     }
 }
