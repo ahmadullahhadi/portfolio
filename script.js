@@ -1,35 +1,75 @@
-// Wait for the DOM content to fully load
+// Custom cursor follower functionality
+document.addEventListener('mousemove', (e) => {
+    // Find the cursor follower element in the DOM
+    const follower = document.querySelector('.cursor-follower');
+    if (follower) {
+        // Update the cursor follower position to match mouse coordinates
+        follower.style.left = e.clientX + 'px';
+        follower.style.top = e.clientY + 'px';
+    }
+});
+// Enhanced cursor effects for interactive elements
+document.querySelectorAll('a, button').forEach(element => {
+    // When mouse enters a link or button
+    element.addEventListener('mouseenter', () => {
+        const follower = document.querySelector('.cursor-follower');
+        if (follower) {
+            // Scale up the cursor follower for hover effect
+            follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        }
+    });
+    
+    // When mouse leaves a link or button
+    element.addEventListener('mouseleave', () => {
+        const follower = document.querySelector('.cursor-follower');
+        if (follower) {
+            // Return cursor follower to normal size
+            follower.style.transform = 'translate(-50%, -50%) scale(1)';
+        }
+    });
+});
+
+// Initialize smooth scrolling once DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling functionality for navigation links
-    const links = document.querySelectorAll('nav ul li a, .btn'); // Update this to include the correct button class
+    // Select all navigation links and buttons that should trigger smooth scroll
+    const links = document.querySelectorAll('nav ul li a, .btn');
+    
     links.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default link behavior
-            const targetId = link.getAttribute('href').substring(1); // Get the target ID from the href
-            const targetSection = document.getElementById(targetId); // Find the target section by ID
+            e.preventDefault(); // Stop default anchor tag behavior
+            
+            // Extract the target section ID from the href attribute
+            const targetId = link.getAttribute('href').substring(1);
+            
+            // Find the corresponding section in the document
+            const targetSection = document.getElementById(targetId);
+            
             if (targetSection) {
+                // Smoothly scroll to the target section
                 targetSection.scrollIntoView({
-                    behavior: 'smooth', // Smooth scroll to the section
-                    block: 'start' // Scroll to the start of the section
+                    behavior: 'smooth', // Enable smooth animation
+                    block: 'start'    // Align top of section with top of viewport
                 });
             }
         });
     });
 });
 
-// Intersection Observer for animating sections when they come into view
+// Initialize Intersection Observer for scroll animations
 const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('visible'); // Add the 'visible' class when the section comes into view
-            observer.unobserve(entry.target); // Stop observing once the section is visible
+            // Add 'visible' class to trigger CSS animations
+            entry.target.classList.add('visible');
+            // Stop observing after animation is triggered
+            observer.unobserve(entry.target);
         }
     });
 }, {
-    threshold: 0.5 // Trigger when 50% of the section is in view
+    threshold: 0.5 // Element becomes visible when 50% is in viewport
 });
 
-// Observe all sections for visibility
+// Apply the observer to all sections in the document
 document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
