@@ -13,6 +13,27 @@
     padding: 0;
 }
 
+.cursor-follower {
+    width: 50px;
+    height: 50px;
+    background: var(--highlight-color);
+    border-radius: 45%;
+    box-shadow: 0 0 15px var(--highlight-color), 0 0 30px rgba(255, 255, 255, 0.2);
+    opacity: 0.8;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+}
+
+.cursor-follower:hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 1;
+    box-shadow: 0 0 20px var(--highlight-color), 0 0 40px rgba(255, 255, 255, 0.4);
+}
+
 /* Body Styling */
 body {
     font-family: 'Inter', sans-serif; /* Font family for body text */
