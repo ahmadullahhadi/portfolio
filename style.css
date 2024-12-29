@@ -287,57 +287,6 @@ footer {
     font-size: 0.9rem; /* Small font size */
 }
 
-/* Responsive Styling for Smaller Screens */
-@media (max-width: 768px) {
-    .hero-content {
-        max-width: 100%; /* Full width for smaller screens */
-    }
-
-    .hero h1 {
-        font-size: 2.5rem; /* Adjust font size */
-    }
-
-    .hero h1 span {
-        font-size: 1rem; /* Adjust font size */
-    }
-
-    .btn {
-        font-size: 0.8rem; /* Adjust font size */
-    }
-
-    .about, .skills, .projects, .contact {
-        padding: 1.5rem; /* Reduce padding */
-    }
-
-    .skills ul li {
-        font-size: 0.8rem; /* Adjust font size */
-    }
-
-    .projects-grid {
-        gap: 1rem; /* Reduce gap */
-    }
-
-    .project-card {
-        padding: 1rem; /* Reduce padding */
-    }
-
-    .project-card h3 {
-        font-size: 1.2rem; /* Adjust font size */
-    }
-
-    .contact .contact-icons {
-        padding: 1rem 0; /* Reduce padding */
-    }
-
-    .contact .contact-icons li {
-        font-size: 1.5rem; /* Adjust icon size */
-    }
-
-    footer {
-        font-size: 0.8rem; /* Adjust font size */
-    }
-}
-
 /* Responsive Styling for Tablets */
 @media (max-width: 1024px) {
     .container {
@@ -346,7 +295,6 @@ footer {
 }
 
 /* Responsive Styling for Mobile Devices */
-
 @media (max-width: 768px) {
     .hero-content {
         max-width: 100%; /* Full width for smaller screens */
