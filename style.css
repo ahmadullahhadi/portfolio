@@ -43,25 +43,72 @@ header {
 }
 
 /* Navigation Bar Styling */
+nav {
+    display: flex; /* Flexbox for alignment */
+    justify-content: flex-end; /* Space between items */
+    align-items: center; /* Vertically center items */
+}
+
 nav ul {
-    display: flex; /* Aligns items in a row */
-    justify-content: flex-end; /* Aligns items to the right */
+    display: flex; /* Flexbox for alignment */
     list-style: none; /* Removes bullets */
 }
 
 nav ul li {
-    margin-left: 2rem; /* Spacing between navigation items */
+    margin-left: 2rem; /* Space between navigation items */
 }
 
 nav ul li a {
-    color: var(--text-color); /* Link color */
+    color: var(--text-color); /* Text color */
     text-decoration: none; /* Removes underline */
+    transition: color 0.3s ease; /* Smooth hover effect */
+    nav {
+    display: flex; /* Flexbox for alignment */
+    justify-content: flex-end; /* Space between items */
+    align-items: center; /* Vertically center items */
+}
+
+nav ul {
+    display: flex; /* Flexbox for alignment */
+    list-style: none; /* Removes bullets */
+}
+
+nav ul li {
+    margin-left: 2rem; /* Space between navigation items */
+}
+
+nav ul li a {
+    color: var(--text-color); /* Text color */
+    text-decoration: none; /* Removes underline */
+    transition: color 0.3s ease; /* Smooth hover effect */
     font-size: 0.9rem; /* Font size */
-    transition: color 0.3s ease; /* Smooth color change on hover */
 }
 
 nav ul li a:hover {
     color: var(--highlight-color); /* Highlight color on hover */
+    background-color: rgba(10, 25, 47, 0.85); /* Transparent background */
+    backdrop-filter: blur(10px); /* Blur effect for transparency */
+}
+
+/* Section Styling */
+section {
+    padding: 100px 0; /* Vertical padding */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Slide effect from bottom */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth appearance */
+}
+
+section.visible {
+    opacity: 1; /* Make visible */
+    transform: translateY(0); /* Reset slide effect */
+}
+
+}
+
+nav ul li a:hover {
+    color: var(--highlight-color); /* Highlight color on hover */
+    background-color: rgba(10, 25, 47, 0.85); /* Transparent background */
+    backdrop-filter: blur(10px); /* Blur effect for transparency */
 }
 
 /* Section Styling */
@@ -190,7 +237,7 @@ p {
     display: flex; /* Align items horizontally */
     justify-content: center; /* Center icons */
     gap: 20px; /* Space between icons */
-    padding: 0;
+    padding: 2rem 0; /* Vertical padding */
 }
 
 .contact .contact-icons li {
