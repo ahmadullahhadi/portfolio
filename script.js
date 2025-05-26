@@ -1,34 +1,3 @@
-// Custom cursor follower functionality
-document.addEventListener('mousemove', (e) => {
-    // Find the cursor follower element in the DOM
-    const follower = document.querySelector('.cursor-follower');
-    if (follower) {
-        // Update the cursor follower position to match mouse coordinates
-        follower.style.left = e.clientX + 'px';
-        follower.style.top = e.clientY + 'px';
-    }
-});
-// Enhanced cursor effects for interactive elements
-document.querySelectorAll('a, button').forEach(element => {
-    // When mouse enters a link or button
-    element.addEventListener('mouseenter', () => {
-        const follower = document.querySelector('.cursor-follower');
-        if (follower) {
-            // Scale up the cursor follower for hover effect
-            follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        }
-    });
-    
-    // When mouse leaves a link or button
-    element.addEventListener('mouseleave', () => {
-        const follower = document.querySelector('.cursor-follower');
-        if (follower) {
-            // Return cursor follower to normal size
-            follower.style.transform = 'translate(-50%, -50%) scale(1)';
-        }
-    });
-});
-
 // Initialize smooth scrolling once DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Select all navigation links and buttons that should trigger smooth scroll
