@@ -17,14 +17,13 @@ This website is a showcase of my personal work, projects, and interests. It's de
 - HTML 🌐
 - CSS 🎨
 - JavaScript 📜
-- GitHub Pages (for hosting) 🖥️
+- Cloudflare Pages (for hosting) 🖥️
 
 ## Contact 📬
 
 You can reach me at:
 
 - Email: [ahmadullahhadi85@gmail.com](mailto:ahmadullahhadi85@gmail.com) 📧
-- WhatsApp: [Click here to message me](https://wa.me/+8801611469710) 📱
 
 ## License 📝
 
