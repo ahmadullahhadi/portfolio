@@ -13,38 +13,6 @@
     padding: 0;                /* Remove default padding */
 }
 
-/* Custom Cursor Follower - Creates an animated floating cursor effect */
-.cursor-follower {
-    width: 30px;              /* Size of the cursor */
-    height: 30px;             /* Size of the cursor */
-    background: var(--highlight-color); /* Uses theme highlight color */
-    border-radius: 45%;       /* Creates rounded shape */
-    box-shadow: 0 0 15px var(--highlight-color), 0 0 30px rgba(255, 255, 255, 0.2); /* Glowing effect */
-    opacity: 0.8;             /* Slight transparency */
-    position: fixed;          /* Follows viewport */
-    pointer-events: none;     /* Prevents interference with clicking */
-    z-index: 10000;          /* Always on top */
-    transition: transform 0.0s ease, box-shadow 0.0s ease, opacity 0.0s ease; /* Instant transitions */
-    transform: translate(-50%, -50%); /* Centers the cursor */
-    mix-blend-mode: difference; /* Creates contrast with background */
-    animation: sprinkle 5s infinite; /* Continuous shape-shifting animation */
-}
-
-/* Cursor Hover Effect - Enlarges cursor on hover */
-.cursor-follower:hover {
-    transform: translate(-50%, -50%) scale(1.5); /* Increases size by 50% */
-    opacity: 1;               /* Full opacity */
-    box-shadow: 0 0 20px var(--highlight-color), 0 0 40px rgba(255, 255, 255, 0.4); /* Enhanced glow */
-}
-
-/* Cursor Animation - Defines shape-shifting behavior */
-@keyframes sprinkle {
-    0%, 100% { border-radius: 45%; }                 /* Start and end shape */
-    25% { border-radius: 50% 45% 50% 45%; }         /* First morph */
-    50% { border-radius: 45% 50% 45% 50%; }         /* Second morph */
-    75% { border-radius: 50% 45% 50% 45%; }         /* Third morph */
-}
-
 /* Main Body Styling - Sets overall page appearance */
 body {
     font-family: 'Inter', sans-serif; /* Modern, clean font */
