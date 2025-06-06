@@ -1,44 +1,81 @@
-// Initialize smooth scrolling once DOM is fully loaded
+// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Select all navigation links and buttons that should trigger smooth scroll
+    initializeSmoothScrolling();
+    initializeTouchFeedback();
+});
+
+/**
+ * Initialize smooth scrolling functionality for navigation links and buttons.
+ * This function sets up click event listeners for seamless page navigation.
+ */
+function initializeSmoothScrolling() {
     const links = document.querySelectorAll('nav ul li a, .btn');
-    
+
     links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault(); // Stop default anchor tag behavior
-            
-            // Extract the target section ID from the href attribute
-            const targetId = link.getAttribute('href').substring(1);
-            
-            // Find the corresponding section in the document
-            const targetSection = document.getElementById(targetId);
-            
-            if (targetSection) {
-                // Smoothly scroll to the target section
-                targetSection.scrollIntoView({
-                    behavior: 'smooth', // Enable smooth animation
-                    block: 'start'    // Align top of section with top of viewport
-                });
-            }
-        });
+        link.addEventListener('click', handleSmoothScroll);
     });
-});
+}
 
-// Initialize Intersection Observer for scroll animations
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Add 'visible' class to trigger CSS animations
+/**
+ * Handle smooth scrolling for clicked links
+ * @param {Event} e - Click event
+ */
+function handleSmoothScroll(e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute('href')?.substring(1);
+    if (!targetId) return;
+
+    const targetSection = document.getElementById(targetId);
+    if (!targetSection) return;
+
+    targetSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+/**
+ * Configure and initialize intersection observer for scroll animations
+ */
+const scrollAnimationObserver = new IntersectionObserver(
+    (entries, observer) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
             entry.target.classList.add('visible');
-            // Stop observing after animation is triggered
             observer.unobserve(entry.target);
-        }
-    });
-}, {
-    threshold: 0.5 // Element becomes visible when 50% is in viewport
+        });
+    },
+    {
+        threshold: 0.5,
+        rootMargin: '0px'
+    }
+);
+
+// Apply scroll animations to all sections
+document.querySelectorAll('section').forEach(section => {
+    scrollAnimationObserver.observe(section);
 });
 
-// Apply the observer to all sections in the document
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-});
+/**
+ * Ensure proper button click animation on mobile devices.
+ * This fixes the issue where :active states stay stuck.
+ */
+function initializeTouchFeedback() {
+    // Enables :active styles on iOS
+    document.addEventListener('touchstart', () => {}, true);
+
+    const interactiveElements = document.querySelectorAll('.btn, nav ul li a');
+
+    interactiveElements.forEach(el => {
+        // Add "pressed" class on touchstart or mousedown
+        el.addEventListener('touchstart', () => el.classList.add('pressed'));
+        el.addEventListener('mousedown', () => el.classList.add('pressed'));
+
+        // Remove it on touchend or mouseup
+        el.addEventListener('touchend', () => el.classList.remove('pressed'));
+        el.addEventListener('mouseup', () => el.classList.remove('pressed'));
+        el.addEventListener('mouseleave', () => el.classList.remove('pressed')); // optional safety
+    });
+}

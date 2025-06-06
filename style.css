@@ -1,325 +1,409 @@
-/* Root Variables for Theme Colors - Defines global color scheme */
+/* ============================
+    1. CSS VARIABLES & RESET
+    ============================ */
 :root {
-    --bg-color: #0a192f;      /* Dark blue background color */
-    --text-color: #8892b0;    /* Muted blue-gray text color */
-    --highlight-color: #64ffda; /* Bright cyan for highlights and accents */
-    --secondary-color: #112240; /* Slightly lighter blue for secondary elements */
+     --bg-color: #0a192f;
+     --text-color: #8892b0;
+     --highlight-color: #64ffda;
+     --secondary-color: #112240;
 }
 
-/* Universal Reset - Applied to all elements */
 * {
-    box-sizing: border-box;    /* Include padding in element width calculations */
-    margin: 0;                 /* Remove default margins */
-    padding: 0;                /* Remove default padding */
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
 }
 
-/* Main Body Styling - Sets overall page appearance */
+/* ============================
+    2. BASE STYLES
+    ============================ */
 body {
-    font-family: 'Inter', sans-serif; /* Modern, clean font */
-    background-color: var(--bg-color); /* Theme background */
-    color: var(--text-color);          /* Theme text color */
-    line-height: 1.6;                  /* Comfortable reading spacing */
-    overflow-x: hidden;                /* Prevents horizontal scrollbars */
+     font-family: 'Inter', sans-serif;
+     background-color: var(--bg-color);
+     color: var(--text-color);
+     line-height: 1.6;
+     overflow-x: hidden;
 }
 
-/* Content Container - Centers and constrains page content */
 .container {
-    max-width: 1200px;        /* Maximum content width */
-    margin: 0 auto;           /* Centers horizontally */
-    padding: 0 2rem;          /* Spacing from screen edges */
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 2rem;
 }
 
-/* Header Styling - Makes header stick to top of page with blur effect */
-header {
-    position: fixed;          /* Keeps header at top of viewport */
-    width: 100%;             /* Full width of viewport */
-    top: 0;                  /* Aligns to top */
-    left: 0;                 /* Aligns to left */
-    padding: 1rem 0;         /* Adds vertical spacing */
-    background-color: rgba(10, 25, 47, 0.85); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Creates frosted glass effect */
-    z-index: 1000;          /* Keeps header above other elements */
-    transition: all 0.3s ease; /* Smooth transitions for all changes */
-}
-
-/* Navigation Bar Layout - Centers navigation items */
-nav {
-    display: flex;           /* Uses flexbox layout */
-    justify-content: center; /* Centers items horizontally */
-    align-items: center;     /* Centers items vertically */
-    padding: 0 1rem;        /* Adds horizontal padding */
-}
-
-/* Navigation List - Horizontal list of navigation items */
-nav ul {
-    display: flex;          /* Creates horizontal layout */
-    list-style: none;       /* Removes bullet points */
-    justify-content: center; /* Centers navigation items */
-    flex-wrap: wrap;        /* Allows items to wrap on small screens */
-    padding: 0;             /* Removes default padding */
-    margin: 0;              /* Removes default margin */
-}
-
-/* Navigation List Items - Spacing between nav items */
-nav ul li {
-    margin: 0 1rem;         /* Adds horizontal spacing between items */
-}
-
-/* Navigation Links - Styling for nav links */
-nav ul li a {
-    color: var(--text-color); /* Uses theme text color */
-    text-decoration: none;    /* Removes underline */
-    font-size: 1rem;         /* Sets font size */
-    transition: color 0.3s ease; /* Smooth color transition on hover */
-}
-
-/* Navigation Hover Effect - Visual feedback on hover */
-nav ul li a:hover {
-    color: var(--highlight-color); /* Changes color on hover */
-    background-color: rgba(10, 25, 47, 0.85); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Blur effect on hover */
-}
-
-/* Mobile Navigation - Adjustments for small screens */
-@media (max-width: 600px) {
-    nav {
-        justify-content: center; /* Centers nav on mobile */
-    }
-
-    nav ul li {
-        margin: 0.5rem;      /* Reduces spacing on mobile */
-    }
-
-    nav ul li a {
-        font-size: 0.9rem;   /* Smaller font on mobile */
-    }
-}
-
-/* Section Animation - Fade-in and slide-up effect */
-section {
-    padding: 100px 0;        /* Vertical padding for sections */
-    opacity: 0;              /* Initially invisible */
-    transform: translateY(20px); /* Starting position below */
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth animations */
-}
-
-/* Section Visibility - Shows section when 'visible' class is added */
-section.visible {
-    opacity: 1;              /* Makes section visible */
-    transform: translateY(0); /* Moves section to final position */
-}
-
-/* Section Visibility State - Controls the visibility of sections when scrolled into view */
-section.visible {
-    opacity: 1;              /* Makes section fully visible when .visible class is added */
-    transform: translateY(0); /* Returns section to original position, removing slide-up effect */
-}
-
-/* Typography Hierarchy - Defines the visual hierarchy through headings */
+/* ============================
+    3. TYPOGRAPHY
+    ============================ */
 h1, h2 {
-    color: #ccd6f6;         /* Light blue-gray color for better contrast against dark background */
-    margin-bottom: 1rem;    /* Provides spacing between heading and following content */
+     color: #ccd6f6;
+     margin-bottom: 1rem;
 }
 
 h1 {
-    font-size: 3rem;        /* Large size for main headings, typically used in hero section */
-    font-weight: 700;       /* Extra bold weight for emphasis */
+     font-size: 3rem;
+     font-weight: 700;
 }
 
 h2 {
-    font-size: 2rem;        /* Medium size for section headings */
-    font-weight: 600;       /* Semi-bold weight for hierarchy */
+     font-size: 2rem;
+     font-weight: 600;
 }
 
-/* Base Text Styling - Sets default paragraph properties */
 p {
-    margin-bottom: 1rem;    /* Consistent spacing between paragraphs */
-    font-size: 1rem;        /* Standard readable font size */
+     margin-bottom: 1rem;
+     font-size: 1rem;
 }
 
-/* Hero Section Layout - Main landing section styling */
+/* ============================
+    4. HEADER & NAVIGATION
+    ============================ */
+header {
+     position: fixed;
+     width: 100%;
+     top: 0;
+     left: 0;
+     padding: 1rem 0;
+     background-color: rgba(10, 25, 47, 0.85);
+     backdrop-filter: blur(10px);
+     z-index: 1000;
+     transition: all 0.3s ease;
+}
+
+nav {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 0 2rem;
+     height: 4rem;
+}
+
+nav ul {
+     display: flex;
+     list-style: none;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 2rem;
+     margin: 0;
+     padding: 0;
+}
+
+nav ul li a {
+     color: var(--text-color);
+     text-decoration: none;
+     font-size: 0.9rem;
+     font-weight: 500;
+     letter-spacing: 0.5px;
+     padding: 0.5rem 0;
+     position: relative;
+     transition: all 0.3s ease;
+}
+
+nav ul li a::after {
+     content: '';
+     position: absolute;
+     width: 0;
+     height: 2px;
+     bottom: 0;
+     left: 0;
+     background-color: var(--highlight-color);
+     transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+     color: var(--highlight-color);
+}
+
+nav ul li a:hover::after {
+     width: 100%;
+}
+
+/* ============================
+    5. SECTIONS & ANIMATIONS
+    ============================ */
+section {
+     padding: 100px 0;
+     opacity: 0;
+     transform: translateY(20px);
+     transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+section.visible {
+     opacity: 1;
+     transform: translateY(0);
+}
+
+/* ============================
+    6. HERO SECTION
+    ============================ */
 .hero {
-    height: 100vh;          /* Takes up full viewport height */
-    display: flex;          /* Uses flexbox for centering */
-    align-items: center;    /* Vertically centers content */
+     height: 100vh;
+     display: flex;
+     align-items: center;
 }
 
-/* Hero Content Container - Constrains and positions hero text */
 .hero-content {
-    max-width: 600px;       /* Limits width for better readability */
+     max-width: 600px;
 }
 
-/* Hero Introduction Text - Styles the greeting text */
 .hero h1 span {
-    color: var(--highlight-color); /* Uses theme accent color */
-    display: block;         /* Places greeting on separate line */
-    font-size: 1.2rem;     /* Smaller size than main heading */
-    margin-bottom: 1rem;    /* Spacing before main heading */
+     color: var(--highlight-color);
+     display: block;
+     font-size: 1.2rem;
+     margin-bottom: 1rem;
 }
 
-/* Call-to-Action Button - Styles interactive buttons */
+/* ============================
+    7. ABOUT SECTION
+    ============================ */
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    margin: 3rem 0;
+}
+
+.about-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.portrait {
+    flex: 0 0 350px;
+    position: relative;
+}
+
+.portrait-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portrait-img:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(100, 255, 218, 0.15);
+}
+
+/* ============================
+    8. COMPONENTS
+    ============================ */
 .btn {
-    display: inline-block;  /* Allows block properties while staying inline */
-    background-color: transparent;
-    color: var(--highlight-color); /* Uses theme accent color */
-    border: 1px solid var(--highlight-color); /* Outlined button style */
-    padding: 0.75rem 1.5rem; /* Comfortable clickable area */
-    font-size: 0.9rem;      /* Slightly smaller than body text */
-    text-decoration: none;   /* Removes default link underline */
-    transition: all 0.3s ease; /* Smooth hover animation */
-    margin-top: 1rem;       /* Space from above elements */
+     display: inline-block;
+     background-color: transparent;
+     color: var(--highlight-color);
+     border: 1px solid var(--highlight-color);
+     padding: 0.75rem 1.5rem;
+     font-size: 0.9rem;
+     text-decoration: none;
+     transition: all 0.3s ease;
+     margin-top: 1rem;
 }
 
-/* Button Hover State - Interactive feedback */
 .btn:hover {
-    background-color: rgba(100, 255, 218, 0.1); /* Subtle highlight effect */
+     background-color: rgba(100, 255, 218, 0.1);
 }
 
-/* Content Section Styling - Common styles for main content sections */
+/* ============================
+    9. SECTION STYLES
+    ============================ */
 .about, .skills, .projects, .contact {
-    background-color: var(--secondary-color); /* Slightly lighter background */
-    border-radius: 4px;     /* Soft corners */
-    padding: 2rem;          /* Internal spacing */
-    margin-bottom: 2rem;    /* Spacing between sections */
+     background-color: var(--secondary-color);
+     border-radius: 4px;
+     padding: 2rem;
+     margin-bottom: 2rem;
 }
 
-/* Skills List Styling */
+/* Skills Section */
 .skills ul {
-    display: flex; /* Align items in a row */
-    flex-wrap: wrap; /* Wrap to next line if necessary */
-    list-style: none; /* Removes bullets */
-    margin-top: 1rem; /* Space above list */
+     display: flex;
+     flex-wrap: wrap;
+     list-style: none;
+     gap: 1rem;
+     margin-top: 1.5rem;
 }
 
 .skills ul li {
-    margin-right: 1rem; /* Space between list items */
-    margin-bottom: 0.5rem; /* Space below items */
-    background-color: rgba(100, 255, 218, 0.1); /* Highlight background */
-    color: var(--highlight-color); /* Text color */
-    padding: 0.5rem 1rem; /* Padding for list items */
-    border-radius: 20px; /* Rounded edges */
-    font-size: 0.9rem; /* Font size */
+     background-color: rgba(100, 255, 218, 0.1);
+     color: var(--highlight-color);
+     padding: 0.75rem 1.25rem;
+     border-radius: 25px;
+     font-size: 0.9rem;
+     transition: transform 0.2s ease;
 }
 
-/* Projects Grid Styling */
+.skills ul li:hover {
+     transform: translateY(-2px);
+     background-color: rgba(100, 255, 218, 0.15);
+}
+
+/* Projects Section */
 .projects-grid {
-    display: grid; /* Grid layout for projects */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
-    gap: 1.5rem; /* Spacing between grid items */
-    margin-top: 2rem; /* Space above grid */
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+     gap: 2rem;
+     margin-top: 2.5rem;
 }
 
 .project-card {
-    background-color: var(--bg-color); /* Card background */
-    border-radius: 4px; /* Rounded corners */
-    padding: 1.5rem; /* Inner padding */
-    transition: transform 0.3s ease; /* Hover effect */
+     background-color: var(--bg-color);
+     border-radius: 8px;
+     padding: 2rem;
+     border: 1px solid rgba(100, 255, 218, 0.1);
+     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-card:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
+     transform: translateY(-8px);
+     box-shadow: 0 8px 30px rgba(100, 255, 218, 0.1);
+     border-color: var(--highlight-color);
 }
 
 .project-card h3 {
-    color: #ccd6f6; /* Card heading color */
-    margin-bottom: 0.5rem; /* Space below heading */
+     color: #ccd6f6;
+     font-size: 1.4rem;
+     margin-bottom: 1rem;
+     font-weight: 600;
 }
 
 /* Contact Section */
 .contact .contact-icons {
-    list-style: none; /* Removes bullets */
-    display: flex; /* Align items horizontally */
-    justify-content: center; /* Center icons */
-    gap: 20px; /* Space between icons */
-    padding: 2rem 0; /* Vertical padding */
+     list-style: none;
+     display: flex;
+     justify-content: center;
+     gap: 2rem;
+     padding: 2.5rem 0;
+     flex-wrap: wrap;
 }
 
 .contact .contact-icons li {
-    font-size: 2rem; /* Adjust size of icons */
+     font-size: 2.0rem;
+     transform: translateY(0);
+     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact .contact-icons a {
-    color: var(--text-color); /* Icon color */
-    text-decoration: none; /* Removes underline */
-    transition: color 0.3s ease; /* Smooth hover effect */
+     color: var(--text-color);
+     text-decoration: none;
+     transition: all 0.3s ease;
+     position: relative;
+     padding: 0rem;
 }
 
 .contact .contact-icons a:hover {
-    color: var(--highlight-color); /* Highlight color on hover */
+     color: var(--highlight-color);
+     transform: translateY(-5px);
 }
 
-/* Footer Styling */
+.contact .contact-icons li:hover {
+     transform: translateY(-5px) scale(1.1);
+}
+
+/* ============================
+    10. FOOTER
+    ============================ */
 footer {
-    text-align: center; /* Center text */
-    padding: 2rem 0; /* Vertical padding */
-    font-size: 0.9rem; /* Small font size */
+     text-align: center;
+     padding: 2rem 0;
+     font-size: 0.9rem;
 }
 
-/* Responsive Styling for Tablets */
+/* ============================
+    11. MEDIA QUERIES
+    ============================ */
+/* Tablets */
 @media (max-width: 1024px) {
-    .container {
-        padding: 0 1rem; /* Reduce horizontal padding */
-    }
+     .container {
+          padding: 0 1rem;
+     }
 }
 
-/* Responsive Styling for Mobile Devices */
+/* Mobile Devices */
 @media (max-width: 768px) {
-    .hero-content {
-        max-width: 100%; /* Full width for smaller screens */
-    }
+     .hero-content {
+          max-width: 100%;
+     }
 
-    .hero h1 {
-        font-size: 2.5rem; /* Adjust font size */
-    }
+     .hero h1 {
+          font-size: 2.5rem;
+     }
 
-    .hero h1 span {
-        font-size: 1rem; /* Adjust font size */
-    }
+     .hero h1 span {
+          font-size: 1rem;
+     }
 
-    .btn {
-        font-size: 0.8rem; /* Adjust font size */
-    }
+     .btn {
+          font-size: 0.8rem;
+     }
 
-    .about, .skills, .projects, .contact {
-        padding: 1.5rem; /* Reduce padding */
-    }
+     .about-content {
+          flex-direction: column-reverse;
+          text-align: center;
+     }
+     
+     .portrait {
+          flex: 0 0 250px;
+     }
 
-    .skills ul li {
-        font-size: 0.8rem; /* Adjust font size */
-    }
+     .about, .skills, .projects, .contact {
+          padding: 1.5rem;
+     }
 
-    .projects-grid {
-        gap: 1rem; /* Reduce gap */
-    }
+     .skills ul li {
+          font-size: 0.8rem;
+     }
 
-    .project-card {
-        padding: 1rem; /* Reduce padding */
-    }
+     .projects-grid {
+          gap: 1rem;
+     }
 
-    .project-card h3 {
-        font-size: 1.2rem; /* Adjust font size */
-    }
+     .project-card {
+          padding: 1rem;
+     }
 
-    .contact .contact-icons {
-        padding: 1rem 0; /* Reduce padding */
-    }
+     .project-card h3 {
+          font-size: 1.2rem;
+     }
 
-    .contact .contact-icons li {
-        font-size: 1.5rem; /* Adjust icon size */
-    }
+     .contact .contact-icons {
+          padding: 1rem 0;
+     }
 
-    footer {
-        font-size: 0.8rem; /* Adjust font size */
-    }
+     .contact .contact-icons li {
+          font-size: 1.5rem;
+     }
+
+     footer {
+          font-size: 0.8rem;
+     }
+
+     nav {
+          padding: 0 1rem;
+          height: 3.5rem;
+     }
+
+     nav ul {
+          gap: 1rem;
+     }
 }
 
 /* Responsive Styling for Smartphones */
 @media (max-width: 600px) {
-    nav ul li {
-        margin: 0.5rem; /* Reduce margin for better spacing on small screens */
+    nav ul {
+        gap: 1rem;
+        padding: 0 0.5rem;
     }
 
     nav ul li a {
-        font-size: 0.9rem; /* Slightly smaller font size */
+        font-size: 0.85rem;
+        padding: 0.25rem 0;
     }
+}
+
+.my-button.pressed {
+  transform: scale(0.95);
+  background-color: #ccc;
 }
